@@ -1,7 +1,6 @@
 package br.com.correcaorapida.sistema.service;
 
-import br.com.correcaorapida.sistema.data.Usuario;
-import br.com.correcaorapida.sistema.jwt.JwtUtils;
+import br.com.correcaorapida.sistema.data.DadosUsuario.Usuario;
 import br.com.correcaorapida.sistema.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

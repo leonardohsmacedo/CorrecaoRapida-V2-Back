@@ -1,6 +1,6 @@
 package br.com.correcaorapida.sistema.repository;
 
-import br.com.correcaorapida.sistema.data.Usuario;
+import br.com.correcaorapida.sistema.data.DadosUsuario.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

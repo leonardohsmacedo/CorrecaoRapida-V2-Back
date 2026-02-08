@@ -4,7 +4,7 @@ import br.com.correcaorapida.sistema.data.payload.requisicoes.RequisicaoCadastro
 import br.com.correcaorapida.sistema.data.payload.requisicoes.RequisicaoLogin;
 import br.com.correcaorapida.sistema.data.payload.respostas.JwtResposta;
 import br.com.correcaorapida.sistema.exception.exception.SignInException;
-import br.com.correcaorapida.sistema.data.Usuario;
+import br.com.correcaorapida.sistema.data.DadosUsuario.Usuario;
 import br.com.correcaorapida.sistema.jwt.JwtUtils;
 import br.com.correcaorapida.sistema.repository.RegrasRepository;
 import br.com.correcaorapida.sistema.repository.UsuarioRepository;
@@ -16,15 +16,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-    @CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
     @RestController
     @RequestMapping("sistema")
     @AllArgsConstructor
