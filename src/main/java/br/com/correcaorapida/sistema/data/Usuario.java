@@ -24,7 +24,11 @@ public class Usuario {
 
     @NotBlank
     @Size(max = 50)
-    private String email;
+    private String username;
+
+    @NotBlank
+    @Size(max = 100)
+    private String nome;
 
     @NotBlank
     @Size(max = 150)
@@ -36,8 +40,8 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Regras> regras = new HashSet<>();
 
-    public Usuario(String email, String password) {
-        this.email = email;
+    public Usuario(String username, String password) {
+        this.username = username;
         this.senha = password;
     }
 

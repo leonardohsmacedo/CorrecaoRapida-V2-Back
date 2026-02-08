@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
     @PostMapping("criarconta")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RequisicaoCadastro requisicaoCadastro) {
 
-        if (usuarioRepository.existsByEmail(requisicaoCadastro.getEmail())) {
+        if (usuarioRepository.existsByUsername(requisicaoCadastro.getEmail())) {
             return ResponseEntity.badRequest().body("Erro: O endereço de e-mail já está em uso!");
         }
 
@@ -54,7 +54,6 @@ import java.util.stream.Collectors;
 
     @PostMapping("login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody RequisicaoLogin requisicaoLogin) {
-
         try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(requisicaoLogin.getEmail(), requisicaoLogin.getSenha()));
@@ -68,8 +67,8 @@ import java.util.stream.Collectors;
 //                    .collect(Collectors.toList());
 
             return ResponseEntity.ok(new JwtResposta(
-                    jwt,
-                    userDetails.getEmail()
+                    jwt
+//                    ,userDetails.getEmail()
             ));
         } catch (AuthenticationException exception) {
             throw new SignInException(exception.getMessage());

@@ -1,6 +1,7 @@
 package br.com.correcaorapida.sistema;
 
 import br.com.correcaorapida.sistema.jwt.AuthEntryPointJwt;
+import br.com.correcaorapida.sistema.jwt.AuthTokenFilter;
 import br.com.correcaorapida.sistema.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableMethodSecurity
@@ -25,10 +27,10 @@ public class WebSecurityConfig {
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
 
-//    @Bean
-//    public AuthTokenFilter authenticationJwtTokenFilter() {
-//        return new AuthTokenFilter();
-//    }
+    @Bean
+    public AuthTokenFilter authenticationJwtTokenFilter() {
+        return new AuthTokenFilter();
+    }
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -56,11 +58,10 @@ public class WebSecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/sistema/criarconta", "/sistema/login").permitAll()
-                                .requestMatchers("api/test/**").permitAll()
                                 .anyRequest().authenticated());
 
         httpSecurity.authenticationProvider(authenticationProvider());
-//        httpSecurity.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
 }
