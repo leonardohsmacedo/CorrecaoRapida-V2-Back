@@ -6,6 +6,7 @@ import br.com.correcaorapida.sistema.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableMethodSecurity
+@EnableAsync
 public class WebSecurityConfig {
 
     @Autowired
@@ -57,7 +59,7 @@ public class WebSecurityConfig {
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/sistema/criarconta", "/sistema/login").permitAll()
+                        auth.requestMatchers("/sistema/criarconta", "/sistema/login", "sistema/verificacao-email/**").permitAll()
                                 .anyRequest().authenticated());
 
         httpSecurity.authenticationProvider(authenticationProvider());

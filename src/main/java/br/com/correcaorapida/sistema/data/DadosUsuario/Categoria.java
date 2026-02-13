@@ -20,7 +20,7 @@ public class Categoria {
     //Junçao com a tabela de questoes
     @OneToMany(mappedBy = "categoria") // Carrega as questões sob demanda
     @JsonIgnore
-    private List<Categoria> questoes;
+    private List<Questao> questoes;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")

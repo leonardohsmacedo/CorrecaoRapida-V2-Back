@@ -45,6 +45,7 @@ public class Usuario {
     @Column(nullable = false)
     private String instituicao;
     private String emailCodigoVerificacao = String.valueOf(UUID.randomUUID());
+    private boolean emailConfirmado;
     private boolean status; // para o painel admin -> usuario inativo eh q nao usou nos utlimos 30 dias
     private LocalDate dataProxProva;
     private boolean versaoPaga;
@@ -52,8 +53,6 @@ public class Usuario {
     //    private Long qtdProvasCorrigidasHj;
     //private Long qtdUsoDeIA = 0L;
     private LocalDateTime ultimoAcesso;
-
-
 
     @Column(nullable = false)
     private Boolean prefEmbaralharQuestoes = false;

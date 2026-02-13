@@ -8,6 +8,7 @@ import br.com.correcaorapida.sistema.data.DadosUsuario.Usuario;
 import br.com.correcaorapida.sistema.jwt.JwtUtils;
 import br.com.correcaorapida.sistema.repository.RegrasRepository;
 import br.com.correcaorapida.sistema.repository.UsuarioRepository;
+import br.com.correcaorapida.sistema.service.UsuarioService;
 import br.com.correcaorapida.sistema.service.UserDetailsImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -31,7 +32,8 @@ import org.springframework.web.bind.annotation.*;
     RegrasRepository regrasRepository;
     PasswordEncoder encoder;
     JwtUtils jwtUtils;
-//    RefreshTokenService refreshTokenService;
+    //////////////////
+    UsuarioService usuarioService;
 
     @PostMapping("criarconta")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RequisicaoCadastro requisicaoCadastro) {
@@ -61,6 +63,7 @@ import org.springframework.web.bind.annotation.*;
 //            List<String> roles = userDetails.getAuthorities().stream()
 //                    .map(GrantedAuthority::getAuthority)
 //                    .collect(Collectors.toList());
+            usuarioService.atualizaUltimoLogin(requisicaoLogin.getEmail());
 
             return ResponseEntity.ok(new JwtResposta(
                     jwt
@@ -72,4 +75,11 @@ import org.springframework.web.bind.annotation.*;
 
     }
 
+    @GetMapping("/verificacao-email/{codigo}")
+    public ResponseEntity<Void> confirmarEmail(@PathVariable String codigo) {
+        if (usuarioService.confirmarEmail(codigo)) {
+            return ResponseEntity.noContent().build(); // 204 No Content é ideal para sucesso sem corpo
+        }
+        return ResponseEntity.notFound().build(); // 404 se o código for inválido
+    }
 }
