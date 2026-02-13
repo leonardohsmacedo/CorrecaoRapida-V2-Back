@@ -2,7 +2,7 @@ package br.com.correcaorapida.sistema.jwt;
 
 import br.com.correcaorapida.sistema.exception.exception.ErrorMessage;
 import br.com.correcaorapida.sistema.exception.exception.TokenValidationException;
-import br.com.correcaorapida.sistema.service.UserDetailsServiceImpl;
+import br.com.correcaorapida.sistema.service.Autenticacao.UserDetailsServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

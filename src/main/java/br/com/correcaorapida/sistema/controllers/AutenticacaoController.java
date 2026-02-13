@@ -9,7 +9,7 @@ import br.com.correcaorapida.sistema.jwt.JwtUtils;
 import br.com.correcaorapida.sistema.repository.RegrasRepository;
 import br.com.correcaorapida.sistema.repository.UsuarioRepository;
 import br.com.correcaorapida.sistema.service.UsuarioService;
-import br.com.correcaorapida.sistema.service.UserDetailsImpl;
+import br.com.correcaorapida.sistema.service.Autenticacao.UserDetailsImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

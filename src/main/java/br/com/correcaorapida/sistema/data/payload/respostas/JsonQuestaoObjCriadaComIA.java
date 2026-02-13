@@ -1,4 +1,4 @@
-package br.com.correcaorapida.sistema.data.payload.respostas.Dados;
+package br.com.correcaorapida.sistema.data.payload.respostas;
 
 public record JsonQuestaoObjCriadaComIA (
         String enunciado,

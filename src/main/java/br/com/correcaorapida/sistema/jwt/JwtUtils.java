@@ -1,7 +1,7 @@
 package br.com.correcaorapida.sistema.jwt;
 
 import br.com.correcaorapida.sistema.exception.exception.TokenValidationException;
-import br.com.correcaorapida.sistema.service.UserDetailsImpl;
+import br.com.correcaorapida.sistema.service.Autenticacao.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

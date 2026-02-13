@@ -1,7 +1,6 @@
 package br.com.correcaorapida.sistema.service;
 
-import br.com.correcaorapida.sistema.data.DadosUsuario.Usuario;
-import br.com.correcaorapida.sistema.data.payload.respostas.Dados.DadosUsuario;
+import br.com.correcaorapida.sistema.data.payload.respostas.DadosUsuario;
 import br.com.correcaorapida.sistema.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -17,7 +15,7 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public DadosUsuario buscaDados(String email) {
+    public DadosUsuario buscaDadosPainelGeral(String email) {
         var dados = usuarioRepository.findByUsername(email).get();
         return new DadosUsuario(dados.getNome(), dados.getInstituicao());
     }

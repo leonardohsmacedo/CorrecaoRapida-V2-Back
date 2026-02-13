@@ -2,7 +2,7 @@ package br.com.correcaorapida.sistema;
 
 import br.com.correcaorapida.sistema.jwt.AuthEntryPointJwt;
 import br.com.correcaorapida.sistema.jwt.AuthTokenFilter;
-import br.com.correcaorapida.sistema.service.UserDetailsServiceImpl;
+import br.com.correcaorapida.sistema.service.Autenticacao.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

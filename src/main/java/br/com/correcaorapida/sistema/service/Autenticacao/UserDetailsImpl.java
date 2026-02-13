@@ -1,4 +1,4 @@
-package br.com.correcaorapida.sistema.service;
+package br.com.correcaorapida.sistema.service.Autenticacao;
 
 import br.com.correcaorapida.sistema.data.DadosUsuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;

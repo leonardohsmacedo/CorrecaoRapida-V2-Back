@@ -1,6 +1,5 @@
 package br.com.correcaorapida.sistema.service.Groq;
 
-import br.com.correcaorapida.sistema.data.payload.respostas.Dados.JsonQuestaoObjCriadaComIA;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
