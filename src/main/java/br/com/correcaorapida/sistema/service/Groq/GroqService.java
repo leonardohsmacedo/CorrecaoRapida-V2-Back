@@ -17,8 +17,8 @@ import java.util.Map;
 @Service
 public class GroqService {
 
-    private final String API_URL = " ";
-    private final String API_KEY = " ";
+    private final String API_KEY = "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";
+    private final String API_URL = "https://api.groq.com/openai/v1/chat/completions";
     private final String modelo = "llama-3.3-70b-versatile";
 
     public JsonNode criarQuestao(String enunciado) {
