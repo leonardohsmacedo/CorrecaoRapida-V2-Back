@@ -21,7 +21,7 @@ public class CategoriaService {
     UsuarioService usuarioService;
 
     public List<CategoriasDoUsuario> buscaListaCategorias(String username) {
-        List<Categoria> categorias = usuarioService.buscaUsuaioCompleto(username).getCategoriasList();
+        List<Categoria> categorias = usuarioService.buscaUsuarioCompleto(username).getCategoriasList();
         List<CategoriasDoUsuario> categoriaDoUsuarios = new ArrayList<>();
 
         for (Categoria value : categorias) {
@@ -33,7 +33,7 @@ public class CategoriaService {
     }
 
     public String checaCategoriaExiste(String nomeCategoria, UserDetails userDetails) {
-        Usuario usuario = usuarioService.buscaUsuaioCompleto(userDetails.getUsername());
+        Usuario usuario = usuarioService.buscaUsuarioCompleto(userDetails.getUsername());
 
         Optional<Categoria> cat = categoriaRepository.findByNomeCategoriaAndUsuario(nomeCategoria, usuario);
 
@@ -45,7 +45,7 @@ public class CategoriaService {
 
         Categoria categoria = new Categoria();
         categoria.setNomeCategoria(nomeCategoria);
-        categoria.setUsuario(usuarioService.buscaUsuaioCompleto(userDetails.getUsername()));
+        categoria.setUsuario(usuarioService.buscaUsuarioCompleto(userDetails.getUsername()));
 
         var dados = categoriaRepository.save(categoria);
 

@@ -17,7 +17,7 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository;
 
     public DadosUsuario buscaDadosPainelGeral(String email) {
-        Usuario dados = buscaUsuaioCompleto(email);
+        Usuario dados = buscaUsuarioCompleto(email);
         return new DadosUsuario(dados.getNome(), dados.getInstituicao());
     }
 
@@ -37,7 +37,7 @@ public class UsuarioService {
                 }).orElse(false);
     }
 
-    public Usuario buscaUsuaioCompleto(String email){
+    public Usuario buscaUsuarioCompleto(String email){
         return usuarioRepository.findByUsername(email).get();
     }
 }
