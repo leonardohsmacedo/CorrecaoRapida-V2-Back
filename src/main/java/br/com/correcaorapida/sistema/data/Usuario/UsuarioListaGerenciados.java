@@ -1,4 +1,4 @@
-package br.com.correcaorapida.sistema.data.DadosUsuario;
+package br.com.correcaorapida.sistema.data.Usuario;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

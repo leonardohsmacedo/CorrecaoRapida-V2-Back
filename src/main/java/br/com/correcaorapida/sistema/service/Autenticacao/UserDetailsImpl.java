@@ -1,6 +1,6 @@
 package br.com.correcaorapida.sistema.service.Autenticacao;
 
-import br.com.correcaorapida.sistema.data.DadosUsuario.Usuario;
+import br.com.correcaorapida.sistema.data.Usuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

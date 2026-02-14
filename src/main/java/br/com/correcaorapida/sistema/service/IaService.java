@@ -1,10 +1,7 @@
 package br.com.correcaorapida.sistema.service;
 
-import br.com.correcaorapida.sistema.exception.exception.SignInException;
 import br.com.correcaorapida.sistema.service.Groq.GroqService;
 import com.fasterxml.jackson.databind.JsonNode;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,10 +43,10 @@ public class IaService {
     public JsonNode criarQuestaoComIA(String tipo, String referencia) {
         if (tipo.equals("obj")) {
             String novoEnunciadoObj = baseQuestaoObj + referencia;
-            return groqService.criarQuestao(novoEnunciadoObj);
+            return groqService.criarQuestaoComIA(novoEnunciadoObj);
         } else {
             String novoEnunciadoDiss = baseQuestaoDiss + referencia;
-            return groqService.criarQuestao(novoEnunciadoDiss);
+            return groqService.criarQuestaoComIA(novoEnunciadoDiss);
         }
     }
 }

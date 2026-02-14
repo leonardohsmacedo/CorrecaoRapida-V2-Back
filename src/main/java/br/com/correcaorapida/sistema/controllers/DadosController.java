@@ -24,10 +24,6 @@ public class DadosController {
 
     @Autowired
     UsuarioService usuarioService;
-    @Autowired
-    IaService iaService;
-    @Autowired
-    CategoriaService categoriaService;
 
     @GetMapping("dados")
     // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
@@ -36,23 +32,6 @@ public class DadosController {
         return ResponseEntity.ok(usuarioService.buscaDadosPainelGeral(userDetails.getUsername()));
     }
 
-    @PostMapping("q-ia")
-    public ResponseEntity<JsonNode> questaoComIA(@Valid @RequestBody RequisicaoQuestaoComIA enunciado) {
-//        Long qtdIa = questaoServico.controleUsoIA((UUID) sessao.getAttribute("idUsuario"));
-//        if (qtdIa == 0) return null; else {
-        try {
-            JsonNode questaoIA = iaService.criarQuestaoComIA(enunciado.tipo(), enunciado.enunciado());
-            return ResponseEntity.ok(questaoIA);
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
-        }
-
-    }
-
-    @GetMapping("q-categorias")
-    public ResponseEntity<List<ListaCategoriasCriarQuestao>> qCategorias(@AuthenticationPrincipal UserDetails userDetails){
-        return ResponseEntity.ok(categoriaService.buscaCategoriasCriarQuestao(userDetails.getUsername()));
-    }
 
     @GetMapping("/all")
     public String allAccess() {

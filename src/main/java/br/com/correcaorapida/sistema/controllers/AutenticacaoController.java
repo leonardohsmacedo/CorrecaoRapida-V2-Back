@@ -4,7 +4,7 @@ import br.com.correcaorapida.sistema.data.payload.requisicoes.RequisicaoCadastro
 import br.com.correcaorapida.sistema.data.payload.requisicoes.RequisicaoLogin;
 import br.com.correcaorapida.sistema.data.payload.respostas.JwtResposta;
 import br.com.correcaorapida.sistema.exception.exception.SignInException;
-import br.com.correcaorapida.sistema.data.DadosUsuario.Usuario;
+import br.com.correcaorapida.sistema.data.Usuario.Usuario;
 import br.com.correcaorapida.sistema.jwt.JwtUtils;
 import br.com.correcaorapida.sistema.repository.RegrasRepository;
 import br.com.correcaorapida.sistema.repository.UsuarioRepository;

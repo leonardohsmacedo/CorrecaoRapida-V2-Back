@@ -1,6 +1,6 @@
 package br.com.correcaorapida.sistema.service;
 
-import br.com.correcaorapida.sistema.data.DadosUsuario.Categoria;
+import br.com.correcaorapida.sistema.data.Questoes.Categoria;
 import br.com.correcaorapida.sistema.data.payload.respostas.ListaCategoriasCriarQuestao;
 import br.com.correcaorapida.sistema.repository.CategoriaRepository;
 import br.com.correcaorapida.sistema.repository.UsuarioRepository;

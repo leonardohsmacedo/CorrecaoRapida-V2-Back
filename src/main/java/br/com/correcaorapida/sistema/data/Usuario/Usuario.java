@@ -1,5 +1,7 @@
-package br.com.correcaorapida.sistema.data.DadosUsuario;
+package br.com.correcaorapida.sistema.data.Usuario;
 
+import br.com.correcaorapida.sistema.data.Questoes.Categoria;
+import br.com.correcaorapida.sistema.data.Questoes.QuestaoDissertativa;
 import br.com.correcaorapida.sistema.data.Regras;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

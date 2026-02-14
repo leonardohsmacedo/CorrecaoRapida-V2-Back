@@ -1,5 +1,6 @@
-package br.com.correcaorapida.sistema.data.DadosUsuario;
+package br.com.correcaorapida.sistema.data.Questoes;
 
+import br.com.correcaorapida.sistema.data.Usuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;

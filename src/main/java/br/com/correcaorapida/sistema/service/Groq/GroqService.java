@@ -21,7 +21,7 @@ public class GroqService {
     private final String API_URL = "https://api.groq.com/openai/v1/chat/completions";
     private final String modelo = "llama-3.3-70b-versatile";
 
-    public JsonNode criarQuestao(String enunciado) {
+    public JsonNode criarQuestaoComIA(String enunciado) {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
