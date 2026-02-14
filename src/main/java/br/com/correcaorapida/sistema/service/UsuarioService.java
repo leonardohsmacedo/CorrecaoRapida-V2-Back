@@ -1,5 +1,6 @@
 package br.com.correcaorapida.sistema.service;
 
+import br.com.correcaorapida.sistema.data.Usuario.Usuario;
 import br.com.correcaorapida.sistema.data.payload.respostas.DadosUsuario;
 import br.com.correcaorapida.sistema.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
@@ -16,7 +17,7 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository;
 
     public DadosUsuario buscaDadosPainelGeral(String email) {
-        var dados = usuarioRepository.findByUsername(email).get();
+        Usuario dados = buscaUsuaioCompleto(email);
         return new DadosUsuario(dados.getNome(), dados.getInstituicao());
     }
 
@@ -34,5 +35,9 @@ public class UsuarioService {
                     usuarioRepository.save(usuario);
                     return true;
                 }).orElse(false);
+    }
+
+    public Usuario buscaUsuaioCompleto(String email){
+        return usuarioRepository.findByUsername(email).get();
     }
 }

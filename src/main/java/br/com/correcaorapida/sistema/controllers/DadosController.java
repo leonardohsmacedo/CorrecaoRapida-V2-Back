@@ -1,21 +1,13 @@
 package br.com.correcaorapida.sistema.controllers;
 
-import br.com.correcaorapida.sistema.data.payload.requisicoes.RequisicaoQuestaoComIA;
 import br.com.correcaorapida.sistema.data.payload.respostas.DadosUsuario;
-import br.com.correcaorapida.sistema.data.payload.respostas.ListaCategoriasCriarQuestao;
-import br.com.correcaorapida.sistema.service.CategoriaService;
-import br.com.correcaorapida.sistema.service.IaService;
 import br.com.correcaorapida.sistema.service.UsuarioService;
-import com.fasterxml.jackson.databind.JsonNode;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
