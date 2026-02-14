@@ -6,6 +6,7 @@ import br.com.correcaorapida.sistema.data.Questoes.QuestaoDissertativa;
 import br.com.correcaorapida.sistema.data.Usuario.Usuario;
 import br.com.correcaorapida.sistema.data.payload.requisicoes.CriarQuestaoDiss;
 import br.com.correcaorapida.sistema.data.payload.requisicoes.CriarQuestaoObj;
+import br.com.correcaorapida.sistema.data.payload.requisicoes.DeletarQuestao;
 import br.com.correcaorapida.sistema.data.payload.respostas.QuestoesDis;
 import br.com.correcaorapida.sistema.data.payload.respostas.QuestoesObj;
 import br.com.correcaorapida.sistema.repository.CategoriaRepository;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -110,5 +112,23 @@ public class QuestaoService {
         }
 
         return questoesDisList;
+    }
+
+    public boolean deletarQuestao(UserDetails userDetails, DeletarQuestao deletarQuestao) {
+        String email = usuarioService.buscaUsuarioCompleto(userDetails.getUsername()).getUsername();
+
+        if (deletarQuestao.tipo().equals("obj")) {
+            Optional<Questao> questao = questaoRepository.findById(deletarQuestao.id());
+            if (questao.get().getUsuario().getUsername().equals(email)) {
+                questaoRepository.deleteById(deletarQuestao.id());
+                return true;
+            } else return false;
+        } else {
+            Optional<QuestaoDissertativa> questaoDissertativa = questaoDissertativaRepository.findById(deletarQuestao.id());
+            if (questaoDissertativa.get().getUsuario().getUsername().equals(email)) {
+                questaoDissertativaRepository.deleteById(deletarQuestao.id());
+                return true;
+            } else return false;
+        }
     }
 }

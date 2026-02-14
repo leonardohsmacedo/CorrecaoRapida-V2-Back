@@ -2,6 +2,7 @@ package br.com.correcaorapida.sistema.controllers;
 
 import br.com.correcaorapida.sistema.data.payload.requisicoes.CriarQuestaoDiss;
 import br.com.correcaorapida.sistema.data.payload.requisicoes.CriarQuestaoObj;
+import br.com.correcaorapida.sistema.data.payload.requisicoes.DeletarQuestao;
 import br.com.correcaorapida.sistema.data.payload.requisicoes.RequisicaoQuestaoComIA;
 import br.com.correcaorapida.sistema.data.payload.respostas.QuestoesDis;
 import br.com.correcaorapida.sistema.data.payload.respostas.QuestoesObj;
@@ -71,5 +72,16 @@ public class QuestaoController {
     @GetMapping("lista-questoes-dis")
     public ResponseEntity<List<QuestoesDis>> questoesDis(@AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(questaoService.listarQuestoesDis(userDetails));
+    }
+
+    @PostMapping("deletar-questao")
+    public ResponseEntity<String> deletarQuestao(@Valid @RequestBody DeletarQuestao deletarQuestao, @AuthenticationPrincipal UserDetails userDetails) {
+        try {
+            if (questaoService.deletarQuestao(userDetails, deletarQuestao)) return ResponseEntity.ok("Deletado");
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            return ResponseEntity.internalServerError().build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 }
