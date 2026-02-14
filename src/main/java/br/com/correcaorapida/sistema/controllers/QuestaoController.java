@@ -1,5 +1,6 @@
 package br.com.correcaorapida.sistema.controllers;
 
+import br.com.correcaorapida.sistema.data.payload.requisicoes.CriarQuestaoDiss;
 import br.com.correcaorapida.sistema.data.payload.requisicoes.CriarQuestaoObj;
 import br.com.correcaorapida.sistema.data.payload.requisicoes.RequisicaoQuestaoComIA;
 import br.com.correcaorapida.sistema.data.payload.respostas.ListaCategoriasCriarQuestao;
@@ -17,6 +18,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -48,13 +50,13 @@ public class QuestaoController {
 
     @PostMapping("q-salvar-obj")
     public ResponseEntity<String> salvarQuestaoObj(@Valid @RequestBody CriarQuestaoObj criarQuestaoObj, @AuthenticationPrincipal UserDetails userDetails) {
-       questaoService.salvarQuestaoObj(criarQuestaoObj, userDetails);
+        questaoService.salvarQuestaoObj(criarQuestaoObj, userDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body("Questão criada com sucesso!");
     }
 
     @PostMapping("q-salvar-dis")
-    public ResponseEntity<?> salvarQuestaoDiss(@RequestBody CriarQuestaoObj criarQuestaoDiss) {
-
-        return ResponseEntity.ok("Quesão criada com sucesso!");
+    public ResponseEntity<?> salvarQuestaoDiss(@RequestBody CriarQuestaoDiss criarQuestaoDiss, @AuthenticationPrincipal UserDetails userDetails) {
+        questaoService.salvarQuestaoDiss(criarQuestaoDiss, userDetails);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Questão criada com sucesso!");
     }
 }

@@ -10,5 +10,6 @@ public record CriarQuestaoObj(
         String respostaCorreta,
         Long idCategoria,
         Boolean publica
+
 ) {
 }

@@ -2,7 +2,8 @@ package br.com.correcaorapida.sistema.data.payload.requisicoes;
 
 public record CriarQuestaoDiss (
         String enunciado,
-        String respostaCorreta,
-        Long idCategoria
+        Long idCategoria,
+        Boolean publica,
+        Long numLinhas
 ){
 }

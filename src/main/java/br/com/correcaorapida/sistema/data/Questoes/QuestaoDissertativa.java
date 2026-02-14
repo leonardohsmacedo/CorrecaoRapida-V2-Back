@@ -13,6 +13,7 @@ public class QuestaoDissertativa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idQuestaoDissertativa;
 
+    @Column(length = 3000)
     private String enunciado;
 
     private Long numLinhas;
